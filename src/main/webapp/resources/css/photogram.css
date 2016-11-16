@@ -1,0 +1,6 @@
+.fa-heart {
+  color: red;
+}
+.fa-heart-o, .fa-comment-o, .fa-heart  {
+  cursor: pointer;
+}
