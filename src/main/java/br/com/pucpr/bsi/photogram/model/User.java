@@ -12,8 +12,10 @@ public class User {
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
+    private Set<Photo> photos;
+    private Set<Friendship> friendship;
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
@@ -57,4 +59,24 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
+    @ManyToOne
+    @JoinTable(name = "user_photo", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "photo_id"))
+    public Set<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(Set<Photo> photos) {
+		this.photos = photos;
+	}
+	
+    @ManyToOne
+    @JoinTable(name = "user_friend", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))	
+	public Set<Friendship> getFriendship() {
+		return friendship;
+	}
+
+	public void setFriendship(Set<Friendship> friendship) {
+		this.friendship = friendship;
+	}
 }
